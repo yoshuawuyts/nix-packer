@@ -24,7 +24,7 @@ list_to_copy() {
 mkdir -p "${cwd}/usr/bin" &&\
 nix-build &&\
 list_to_copy |\
-xargs tar -cf "${cwd}/result.tar" $(for binary in $(readlink ${cwd}/result)/bin/*; do ln -s "$binary" "${cwd}/usr/bin/${binary##*/}"; echo "usr/bin/${binary##*/}"; done)
+xargs tar -cf "${cwd}/result.tar.gz" $(for binary in $(readlink ${cwd}/result)/bin/*; do ln -s "$binary" "${cwd}/usr/bin/${binary##*/}"; echo "usr/bin/${binary##*/}"; done)
 
 if [[ $? -eq 0 ]]; then
   echo "done"
